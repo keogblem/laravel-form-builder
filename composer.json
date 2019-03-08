@@ -1,6 +1,6 @@
 {
   "name": "keogblem/laravel-form-tools",
-  "description": "This package helps generate Form from Json",
+  "description": "This package helps generate Form from JSON",
   "require": {
     "php": "^7.1"
   },

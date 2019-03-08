@@ -34,6 +34,7 @@ class FormTools
    * @param        $source_name
    * @param string $source_type
    * @param null   $metas
+   * @return \Keogblem\FormTools\FormTools
    */
   public function source($source_name, $source_type = 'file', $metas = null)
   {
