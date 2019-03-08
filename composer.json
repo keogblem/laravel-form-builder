@@ -14,7 +14,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Keogblem\\FormTools": "src/"
+      "Keogblem\\FormTools\\": "src/"
     }
   },
   "extra": {
