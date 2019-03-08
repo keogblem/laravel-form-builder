@@ -1,0 +1,30 @@
+{
+  "name": "keogblem/laravel-form-tools",
+  "description": "Form generator from Json",
+  "require": {
+    "php": "^7.2"
+  },
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Olivier GBLEM",
+      "email": "olivier@keographix.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Keogblem\\FormTools": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Keogblem\\FormTools\\FormToolsServiceProvider"
+      ],
+      "aliases" : {
+        "FormTools" : "Keogblem\\FormTools\\Facade"
+      }
+    }
+  }
+}
