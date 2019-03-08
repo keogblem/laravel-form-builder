@@ -1,8 +1,8 @@
 {
   "name": "keogblem/laravel-form-tools",
-  "description": "Form generator from Json",
+  "description": "This package helps generate Form from Json",
   "require": {
-    "php": "^7.2"
+    "php": "^7.1"
   },
   "type": "library",
   "license": "MIT",
@@ -23,8 +23,9 @@
         "Keogblem\\FormTools\\FormToolsServiceProvider"
       ],
       "aliases" : {
-        "FormTools" : "Keogblem\\FormTools\\Facade"
+        "FormTools" : "Keogblem\\FormTools\\FormToolsFacade"
       }
     }
-  }
+  },
+  "minimum-stability": "dev"
 }

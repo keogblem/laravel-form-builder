@@ -22,9 +22,23 @@ class FormTools
    * @param string $source_type
    * @param null   $metas
    */
-  public function __construct($source_name, $source_type = 'file', $metas = null)
+  public function __construct($source_name = null, $source_type = 'file', $metas = null)
+  {
+    if ($source_name) {
+      $this->form_data = $this->setSource($source_name, $source_type, $metas)->loadData();
+    }
+  }
+
+  /**
+   * Sets the JSON Source, and loads Form Data
+   * @param        $source_name
+   * @param string $source_type
+   * @param null   $metas
+   */
+  public function source($source_name, $source_type = 'file', $metas = null)
   {
     $this->form_data = $this->setSource($source_name, $source_type, $metas)->loadData();
+    return $this;
   }
 
   /**
@@ -33,7 +47,7 @@ class FormTools
    * @param array  $data
    * @return string|null
    */
-  public function generate($type = 'create', $data = [])
+  public function generate($type = 'create', array $data = [])
   {
     // $data = [ 'url' , 'model', input-size, ... ];
     logger($data);
