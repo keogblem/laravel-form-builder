@@ -1,8 +1,8 @@
 <?php
 
-namespace Keogblem\FormTools;
+namespace KeoGblem\FormTools;
 
-use Illuminate\Support\Facades\App;
+use App;
 use Illuminate\Support\ServiceProvider;
 
 class FormToolsServiceProvider extends ServiceProvider
@@ -14,7 +14,7 @@ class FormToolsServiceProvider extends ServiceProvider
 
   public function register()
   {
-    App::bind('formtools', 'Keogblem\FormTools\FormTools');
+    App::bind('formtools', 'KeoGblem\FormTools\FormTools');
   }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Keogblem\FormTools\Traits;
+namespace KeoGblem\FormTools\Traits;
 
 trait Generator
 {
@@ -158,8 +158,8 @@ trait Generator
   protected function setValueFromModel(array $field): array
   {
     if ($this->model) {
-      $_key           = !empty($field['model-key']) ? $field['model-key'] : $field['name'];
-      $field['value'] = $this->model[$_key];
+      $_key           = $field['model-key'] ?? $field['name'];
+      $field['value'] = $this->model[$_key] ?? null;
       logger($_key . ' ' . $field['value']);
     }
     return $field;

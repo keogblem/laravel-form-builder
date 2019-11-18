@@ -1,6 +1,6 @@
 <?php
 
-namespace Keogblem\FormTools\Traits;
+namespace KeoGblem\FormTools\Traits;
 
 trait HiddenFieldGenerator
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Keogblem\FormTools;
+namespace KeoGblem\FormTools;
 
 use Illuminate\Support\Facades\Facade;
 

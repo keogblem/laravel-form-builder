@@ -1,9 +1,13 @@
 {
   "name": "keogblem/laravel-form-tools",
-  "description": "This package helps generate Form from JSON",
-  "require": {
-    "php": "^7.1"
-  },
+  "description": "This package helps generate HTML Forms from JSON",
+  "keywords": [
+    "generators",
+    "laravel",
+    "form",
+    "html",
+    "helper"
+  ],
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -12,18 +16,21 @@
       "email": "olivier@keographix.com"
     }
   ],
+  "require": {
+    "php": "^7.1"
+  },
   "autoload": {
     "psr-4": {
-      "Keogblem\\FormTools\\": "src/"
+      "KeoGblem\\FormTools\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Keogblem\\FormTools\\FormToolsServiceProvider"
+        "KeoGblem\\FormTools\\FormToolsServiceProvider"
       ],
       "aliases" : {
-        "FormTools" : "Keogblem\\FormTools\\FormToolsFacade"
+        "FormTools" : "KeoGblem\\FormTools\\FormToolsFacade"
       }
     }
   },

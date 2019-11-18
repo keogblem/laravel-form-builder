@@ -1,6 +1,8 @@
 <?php
 
-namespace Keogblem\FormTools\Traits;
+namespace KeoGblem\FormTools\Traits;
+
+use Exception;
 
 trait FormDataLoader
 {
@@ -42,8 +44,11 @@ trait FormDataLoader
     $path = $this->base_path . $this->source_name . '.json';
     try {
       return json_decode(file_get_contents($path), true);
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
       logger('No source file found at "' . $path . '" : '.$e->getMessage());
+      // if (app()->environment() == 'local') {
+      //   throw $e;
+      // }
       return null;
     }
   }

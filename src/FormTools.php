@@ -1,10 +1,10 @@
 <?php
 
-namespace Keogblem\FormTools;
+namespace KeoGblem\FormTools;
 
-use Keogblem\FormTools\Traits\FormDataLoader;
-use Keogblem\FormTools\Traits\Generator;
-use Keogblem\FormTools\Traits\Validator;
+use KeoGblem\FormTools\Traits\FormDataLoader;
+use KeoGblem\FormTools\Traits\Generator;
+use KeoGblem\FormTools\Traits\Validator;
 
 class FormTools
 {
@@ -34,7 +34,7 @@ class FormTools
    * @param        $source_name
    * @param string $source_type
    * @param null   $metas
-   * @return \Keogblem\FormTools\FormTools
+   * @return \KeoGblem\FormTools\FormTools
    */
   public function source($source_name, $source_type = 'file', $metas = null)
   {
