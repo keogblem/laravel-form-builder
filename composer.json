@@ -30,7 +30,6 @@
                 "KeoGblem\\FormTools\\FormToolsServiceProvider"
             ],
             "aliases": {
-                "FormTools": "KeoGblem\\FormTools\\FormToolsFacade"
             }
         }
     },

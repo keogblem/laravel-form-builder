@@ -1,6 +1,6 @@
 # Laravel Form Tools
 
-### This package helps generate Form from Json data
+This package helps generate Form from Json data
 
 - Laravel: ^8.0
 - Author: Olivier GBLEM
