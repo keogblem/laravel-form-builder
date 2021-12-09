@@ -2,97 +2,116 @@
 
 namespace KeoGblem\FormTools;
 
-use KeoGblem\FormTools\Traits\FormDataLoader;
-use KeoGblem\FormTools\Traits\Generator;
-use KeoGblem\FormTools\Traits\Validator;
+use Arr;
+use KeoGblem\FormTools\Concerns\FormDataLoader;
+use KeoGblem\FormTools\Concerns\Generator;
+use KeoGblem\FormTools\Concerns\Validator;
 
 class FormTools
 {
-  use FormDataLoader;
-  use Generator;
-  use Validator;
+    use FormDataLoader;
+    use Generator;
+    use Validator;
 
-  protected $form_data = [];
-  protected $id_stamp = 1;
-  protected $model;
+    protected $form_data = [];
+    protected $id_stamp = 1;
+    protected $model;
+    protected $verbosity = 0;
 
-  /**
-   * Form constructor.
-   * @param        $source_name
-   * @param string $source_type
-   * @param null   $metas
-   */
-  public function __construct($source_name = null, $source_type = 'file', $metas = null)
-  {
-    if ($source_name) {
-      $this->form_data = $this->setSource($source_name, $source_type, $metas)->loadData();
-    }
-  }
+    public function __construct($source_name = null, $source_type = 'file', array $metas = [])
+    {
+        if ($source_name) {
+            $this->form_data = $this->setSource($source_name, $source_type, $metas)->loadData();
+        }
 
-  /**
-   * Sets the JSON Source, and loads Form Data
-   * @param        $source_name
-   * @param string $source_type
-   * @param null   $metas
-   * @return \KeoGblem\FormTools\FormTools
-   */
-  public function source($source_name, $source_type = 'file', $metas = null)
-  {
-    $this->form_data = $this->setSource($source_name, $source_type, $metas)->loadData();
-    return $this;
-  }
-
-  /**
-   * returns a generated form form the data loaded
-   * @param string $type
-   * @param array  $data
-   * @return string|null
-   */
-  public function generate($type = 'create', array $data = [])
-  {
-    // $data = [ 'url' , 'model', input-size, ... ];
-    logger($data);
-    if (empty($data)) {
-      return null;
-    }
-    if (empty($this->form_data)) {
-      return null;
+        $this->verbosity = (bool) Arr::get($metas, 'verbosity');
     }
 
-    $this->form_data['type'] = $type;
-    $this->normalizeOverrideFormdata($data);
-
-    if (!empty($data['model'])) {
-      $this->model = $data['model'];
-      if (!is_array($this->model)) {
-        $this->model->toArray();
-      }
-      logger($this->model);
+    /**
+     * Sets the JSON Source, and loads Form Data
+     * @param        $source_name
+     * @param  string  $source_type
+     * @param  null  $metas
+     * @return \KeoGblem\FormTools\FormTools
+     */
+    public function source($source_name, string $source_type = 'file', $metas = null): static
+    {
+        $this->form_data = $this->setSource($source_name, $source_type, $metas)->loadData();
+        return $this;
     }
 
-    $this->id_stamp = rand(111, 999);
+    /**
+     * returns a generated form from the data loaded
+     * @param  string  $type
+     * @param  array  $data
+     * @return string|null
+     */
+    public function generate(string $type = 'create', array $data = []): ?string
+    {
+        $this->writeLog($data);
 
-    return $this->createFromData();
-  }
+        if (empty($data)) {
+            return null;
+        }
+        if (empty($this->form_data)) {
+            return null;
+        }
 
-  /**
-   * Returns the form validator
-   * @param array $inputs
-   * @return mixed
-   */
-  public function validate(array $inputs)
-  {
-    return $this->validateInputs($inputs);
-  }
+        $this->form_data['type'] = $type;
+        $this->normalizeOverrideFormdata($data);
 
-  protected function normalizeOverrideFormdata(array $data)
-  {
-    $this->form_data['id']         = $data['id'] ?? $this->form_data['id'] ?? null;
-    $this->form_data['url']        = $data['url'] ?? $this->form_data['url'] ?? '';
-    $this->form_data['class']      = $data['class'] ?? $this->form_data['class'] ?? '';
-    $this->form_data['method']     = $data['method'] ?? $this->form_data['method'] ?? 'GET';
-    $this->form_data['input-size'] = $data['input-size'] ?? $this->form_data['input-size'] ?? '';
-    $this->form_data['columns']    = $data['columns'] ?? $this->form_data['columns'] ?? 1;
-    $this->form_data['title']      = $data['title'] ?? $this->form_data['title'] ?? '';
-  }
+        if (! empty($data['model'])) {
+            $this->model = $data['model'];
+
+            if (! is_array($this->model)) {
+                $this->model->toArray();
+            }
+
+            $this->writeLog($this->model);
+        }
+
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $this->id_stamp = random_int(111, 999);
+
+        return $this->createFromData();
+    }
+
+    /**
+     * Returns the form validator
+     * @param  array  $inputs
+     * @return \Illuminate\Validation\Validator
+     */
+    public function validate(array $inputs): \Illuminate\Validation\Validator
+    {
+        return $this->validateInputs($inputs);
+    }
+
+    protected function normalizeOverrideFormdata(array $data)
+    {
+        $this->form_data['id']         = $data['id'] ?? $this->form_data['id'] ?? null;
+        $this->form_data['url']        = $data['url'] ?? $this->form_data['url'] ?? '';
+        $this->form_data['class']      = $data['class'] ?? $this->form_data['class'] ?? '';
+        $this->form_data['method']     = $data['method'] ?? $this->form_data['method'] ?? 'GET';
+        $this->form_data['input-size'] = $data['input-size'] ?? $this->form_data['input-size'] ?? '';
+        $this->form_data['columns']    = $data['columns'] ?? $this->form_data['columns'] ?? 1;
+        $this->form_data['title']      = $data['title'] ?? $this->form_data['title'] ?? '';
+    }
+
+    protected function writeLog($message, int $level = 2)
+    {
+        if ($level >= $this->verbosity) {
+            return;
+        }
+
+        if (is_array($message)) {
+            logger($message);
+            return;
+        }
+
+        $message = (is_string($message) || is_numeric($message))
+            ? $message
+            : json_encode($message);
+
+        logger('FORM BUILDER :: ' . $message);
+    }
 }

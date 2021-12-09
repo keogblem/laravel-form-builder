@@ -7,14 +7,15 @@ use Illuminate\Support\ServiceProvider;
 
 class FormToolsServiceProvider extends ServiceProvider
 {
-  public function boot()
-  {
-    // logger("Keo Package");
-  }
+    public function boot()
+    {
+        // logger("Keo Package");
+    }
 
-  public function register()
-  {
-    App::bind('formtools', 'KeoGblem\FormTools\FormTools');
-  }
+    public function register()
+    {
+        require 'helpers.php';
 
+        App::bind('formtools', 'KeoGblem\FormTools\FormTools');
+    }
 }

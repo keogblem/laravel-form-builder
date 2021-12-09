@@ -2,7 +2,7 @@
 
 ### This package helps generate Form from Json data
 
-- Laravel: ^5.6
+- Laravel: ^8.0
 - Author: Olivier GBLEM
 - Author Homepage: 
 
