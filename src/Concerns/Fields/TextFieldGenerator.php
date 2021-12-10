@@ -1,8 +1,8 @@
 <?php
 
-namespace KeoGblem\FormTools\Concerns\Fields;
+namespace KeoGblem\FormBuilder\Concerns\Fields;
 
-use KeoGblem\FormTools\Concerns\Generator;
+use KeoGblem\FormBuilder\Concerns\Generator;
 
 trait TextFieldGenerator
 {
@@ -27,22 +27,21 @@ trait TextFieldGenerator
         }
 
         // start Outputing -------------------------------------
-        $output = '<div class="form-group">';
+        $output = '<div class="form-group">' . PHP_EOL;
 
         // label
         if (! empty($field['label'])) {
-            $output .= '<label for="' . $field_id . '">' . $field['label'] . '</label>';
+            $output .= "\t" . '<label for="' . $field_id . '">' . $field['label'] . '</label>' . PHP_EOL;
         }
 
         // input
-        $output .= '<input ' . $input_attributes . ' >';
+        $output .= "\t" . '<input ' . $input_attributes . ' >' . PHP_EOL;
 
         // helper text
         if (! empty($field['help-text'])) {
-            $output .= '<small id="" class="form-text text-muted">' . $field['help-text'] . '</small>';
+            $output .= "\t" . '<small id="" class="form-text text-muted">' . $field['help-text'] . '</small>' . PHP_EOL;
         }
-        $output .= '</div>';
 
-        return $output;
+        return $output . '</div>' . PHP_EOL;
     }
 }

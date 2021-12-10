@@ -1,6 +1,6 @@
 <?php
 
-namespace KeoGblem\FormTools\Concerns;
+namespace KeoGblem\FormBuilder\Concerns;
 
 use Str;
 

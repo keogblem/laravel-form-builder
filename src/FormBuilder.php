@@ -1,13 +1,13 @@
 <?php
 
-namespace KeoGblem\FormTools;
+namespace KeoGblem\FormBuilder;
 
 use Arr;
-use KeoGblem\FormTools\Concerns\FormDataLoader;
-use KeoGblem\FormTools\Concerns\Generator;
-use KeoGblem\FormTools\Concerns\Validator;
+use KeoGblem\FormBuilder\Concerns\FormDataLoader;
+use KeoGblem\FormBuilder\Concerns\Generator;
+use KeoGblem\FormBuilder\Concerns\Validator;
 
-class FormTools
+class FormBuilder
 {
     use FormDataLoader;
     use Generator;
@@ -32,7 +32,7 @@ class FormTools
      * @param        $source_name
      * @param  string  $source_type
      * @param  null  $metas
-     * @return \KeoGblem\FormTools\FormTools
+     * @return \KeoGblem\FormBuilder\FormBuilder
      */
     public function source($source_name, string $source_type = 'file', $metas = null): static
     {
@@ -76,11 +76,6 @@ class FormTools
         return $this->createFromData();
     }
 
-    /**
-     * Returns the form validator
-     * @param  array  $inputs
-     * @return \Illuminate\Validation\Validator
-     */
     public function validate(array $inputs): \Illuminate\Validation\Validator
     {
         return $this->validateInputs($inputs);

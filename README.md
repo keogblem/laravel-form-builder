@@ -1,4 +1,4 @@
-# Laravel Form Tools
+# Laravel Form Builder
 
 This package helps generate Form from Json data
 

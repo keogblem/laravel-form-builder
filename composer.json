@@ -1,5 +1,5 @@
 {
-    "name": "keogblem/laravel-form-tools",
+    "name": "keogblem/laravel-form-builder",
     "description": "This package helps generate HTML Forms from JSON",
     "keywords": [
         "generators",
@@ -21,13 +21,13 @@
     },
     "autoload": {
         "psr-4": {
-            "KeoGblem\\FormTools\\": "src/"
+            "KeoGblem\\FormBuilder\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "KeoGblem\\FormTools\\FormToolsServiceProvider"
+                "KeoGblem\\FormBuilder\\FormBuilderServiceProvider"
             ],
             "aliases": {
             }

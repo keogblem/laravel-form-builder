@@ -1,14 +1,14 @@
 <?php
 
-namespace KeoGblem\FormTools\Concerns;
+namespace KeoGblem\FormBuilder\Concerns;
 
 use Arr;
-use KeoGblem\FormTools\Concerns\Fields\ButtonFieldGenerator;
-use KeoGblem\FormTools\Concerns\Fields\HiddenFieldGenerator;
-use KeoGblem\FormTools\Concerns\Fields\SelectFieldGenerator;
-use KeoGblem\FormTools\Concerns\Fields\TextareaFieldGenerator;
-use KeoGblem\FormTools\Concerns\Fields\TextFieldGenerator;
-use KeoGblem\FormTools\Concerns\Sections\SectionGenerator;
+use KeoGblem\FormBuilder\Concerns\Fields\ButtonFieldGenerator;
+use KeoGblem\FormBuilder\Concerns\Fields\HiddenFieldGenerator;
+use KeoGblem\FormBuilder\Concerns\Fields\SelectFieldGenerator;
+use KeoGblem\FormBuilder\Concerns\Fields\TextareaFieldGenerator;
+use KeoGblem\FormBuilder\Concerns\Fields\TextFieldGenerator;
+use KeoGblem\FormBuilder\Concerns\Sections\SectionGenerator;
 
 trait Generator
 {

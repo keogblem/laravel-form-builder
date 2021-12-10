@@ -1,6 +1,6 @@
 <?php
 
-namespace KeoGblem\FormTools\Concerns\Fields;
+namespace KeoGblem\FormBuilder\Concerns\Fields;
 
 trait SelectFieldGenerator
 {
@@ -17,8 +17,8 @@ trait SelectFieldGenerator
         $field = $this->setValueFromModel($field);
 
         // prepare the ID and CLASS values -------------------------------------
-        $field_id    = \KeoGblem\FormTools\Concerns\Generator::buildFieldID($field);
-        $field_class = \KeoGblem\FormTools\Concerns\Generator::buildFieldClass($field, 'custom-select');
+        $field_id    = \KeoGblem\FormBuilder\Concerns\Generator::buildFieldID($field);
+        $field_class = \KeoGblem\FormBuilder\Concerns\Generator::buildFieldClass($field, 'custom-select');
 
         // prepare input ATTRIBUTES -------------------------------------
         $input_attributes = self::processCommonAttributes($field, $field_id, $field_class);
@@ -30,23 +30,23 @@ trait SelectFieldGenerator
             $output .= '<label for="' . $field_id . '">' . $field['label'] . '</label>';
         }
         // input
-        $output .= '<select ' . $input_attributes . ' >';
+        $output .= "\t" . '<select ' . $input_attributes . ' >';
         if (! empty($field['options_groups'])) {
             foreach ($field['options_groups'] as $options_group) {
-                $output .= '<optgroup label="' . $options_group['label'] . '" ' . ! empty($options_group['attributes']) ? $options_group['attributes'] : '' . '>';
-                $output .= $this->processSelectOptions($field, $options_group['options']);
-                $output .= '</optgroup>' . "\n";
+                $output .= "\t" . '<optgroup label="' . $options_group['label'] . '" ' . ! empty($options_group['attributes']) ? $options_group['attributes'] : '>';
+                $output .= "\t" . $this->processSelectOptions($field, $options_group['options']);
+                $output .= "\t" . '</optgroup>' . "\n";
             }
         } else {
             $output .= $this->processSelectOptions($field, $field['options']);
         }
-        $output .= '</select>';
+        $output .= "\t" .'</select>';
 
         // helper text
         if (! empty($field['help-text'])) {
-            $output .= '<small id="" class="form-text text-muted">' . $field['help-text'] . '</small>';
+            $output .= "\t" .'<small id="" class="form-text text-muted">' . $field['help-text'] . '</small>';
         }
-        $output .= '</div>';
+        $output .= "\t" . '</div>';
 
         return $output;
     }
@@ -62,6 +62,7 @@ trait SelectFieldGenerator
         foreach ($options as $option) {
             $option_attributes = '';
             if (! empty($field['value'])) {
+                /** @noinspection TypeUnsafeComparisonInspection */
                 if ($option['value'] == $field['value']) {
                     $option_attributes .= 'selected ';
                 }

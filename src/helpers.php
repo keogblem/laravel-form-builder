@@ -1,10 +1,10 @@
 <?php
 
-use KeoGblem\FormTools\FormTools;
+use KeoGblem\FormBuilder\FormBuilder;
 
 if (! function_exists('form_builder')) {
-    function form_builder(...$args): FormTools
+    function form_builder(...$args): FormBuilder
     {
-        return new FormTools(...$args);
+        return new FormBuilder(...$args);
     }
 }

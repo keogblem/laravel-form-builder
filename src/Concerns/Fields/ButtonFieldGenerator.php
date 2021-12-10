@@ -1,13 +1,13 @@
 <?php
 
-namespace KeoGblem\FormTools\Concerns\Fields;
+namespace KeoGblem\FormBuilder\Concerns\Fields;
 
 trait ButtonFieldGenerator
 {
     protected function generateButtonField(array $field): string
     {
         // prepare the ID and CLASS values -------------------------------------
-        $field_id = \KeoGblem\FormTools\Concerns\Generator::buildFieldID($field);
+        $field_id = \KeoGblem\FormBuilder\Concerns\Generator::buildFieldID($field);
 
         $field_class = 'btn';
 
@@ -17,7 +17,7 @@ trait ButtonFieldGenerator
             $field_class .= ' btn-' . $field['color'];
         }
 
-        $field_class = \KeoGblem\FormTools\Concerns\Generator::buildFieldClass($field, $field_class);
+        $field_class = \KeoGblem\FormBuilder\Concerns\Generator::buildFieldClass($field, $field_class);
 
         // prepare input ATTRIBUTES -------------------------------------
         $input_attributes = self::processCommonAttributes($field, $field_id, $field_class);

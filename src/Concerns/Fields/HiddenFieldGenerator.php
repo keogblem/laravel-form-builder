@@ -1,6 +1,6 @@
 <?php
 
-namespace KeoGblem\FormTools\Concerns\Fields;
+namespace KeoGblem\FormBuilder\Concerns\Fields;
 
 trait HiddenFieldGenerator
 {
@@ -14,8 +14,8 @@ trait HiddenFieldGenerator
         $field = $this->setValueFromModel($field);
 
         // prepare the ID and CLASS values -------------------------------------
-        $field_id    = \KeoGblem\FormTools\Concerns\Generator::buildFieldID($field);
-        $field_class = \KeoGblem\FormTools\Concerns\Generator::buildFieldClass($field);
+        $field_id    = \KeoGblem\FormBuilder\Concerns\Generator::buildFieldID($field);
+        $field_class = \KeoGblem\FormBuilder\Concerns\Generator::buildFieldClass($field);
 
         // prepare input ATTRIBUTES -------------------------------------
         $input_attributes = self::processCommonAttributes($field, $field_id, $field_class);

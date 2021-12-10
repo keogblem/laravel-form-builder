@@ -1,11 +1,12 @@
 <?php
 
-namespace KeoGblem\FormTools;
+namespace KeoGblem\FormBuilder;
 
 use App;
 use Illuminate\Support\ServiceProvider;
+use KeoGblem\FormBuilder\FormBuilder;
 
-class FormToolsServiceProvider extends ServiceProvider
+class FormBuilderServiceProvider extends ServiceProvider
 {
     public function boot()
     {
@@ -16,6 +17,6 @@ class FormToolsServiceProvider extends ServiceProvider
     {
         require 'helpers.php';
 
-        App::bind('formtools', 'KeoGblem\FormTools\FormTools');
+        App::bind('formbuilder', FormBuilder::class);
     }
 }
