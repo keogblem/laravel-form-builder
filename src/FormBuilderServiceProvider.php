@@ -10,7 +10,6 @@ class FormBuilderServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // logger("Keo Package");
     }
 
     public function register()
